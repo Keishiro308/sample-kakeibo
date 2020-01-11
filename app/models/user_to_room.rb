@@ -1,0 +1,2 @@
+class UserToRoom < ApplicationRecord
+end

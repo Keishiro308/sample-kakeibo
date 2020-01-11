@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  catogory: MyString
+  date: 2020-01-11 18:38:38
+  value: 1
+  memo: MyText
+
+two:
+  name: MyString
+  catogory: MyString
+  date: 2020-01-11 18:38:38
+  value: 1
+  memo: MyText
