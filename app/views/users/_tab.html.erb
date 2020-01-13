@@ -17,7 +17,7 @@
             <div class='invite-card'>
               <%= invited.room.name%>に
               <%= invited.inviting_user.name%>さんから招待されました
-              <%= link_to  "参加", "/invites/#{invite.id}/rooms/add", method: :post %>
+              <%= link_to  "参加", "/invites/#{invited.id}/rooms/add", method: :post %>
             </div>
           <% end %>
       </div>
