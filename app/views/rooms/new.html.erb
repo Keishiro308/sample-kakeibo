@@ -1,0 +1,8 @@
+<%= form_with model:@room do |f| %>
+  <div class="form-container">
+    <%= f.label :name, "名前" %>
+    <%= f.text_field :name, placeholder: '家計簿の名前を入力してください' %>
+    <%= f.submit '作成' %>
+  </div>
+  
+<% end %>

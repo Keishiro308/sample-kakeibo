@@ -61,3 +61,11 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
+gem 'jquery-rails', '4.3.3'
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
+gem "simple_calendar", "~> 2.0"
+gem 'i18n_generators'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
+gem "chartkick"

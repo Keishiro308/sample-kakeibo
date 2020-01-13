@@ -1,0 +1,47 @@
+<h1><%= @room.name%></h1>
+<h2><%= l @date %></h2>
+<h2>支出詳細</h2>
+<table>
+  <thead>
+    <tr>
+      <td>名前</td>
+      <td>金額</td>
+      <td>カテゴリー</td>
+      <td>備考</td>
+    </tr>
+  </thead>
+  <tbody>
+  <%total_cost = 0%>
+    <% @items.each do |item|%>
+    <% total_cost += item.value%>
+    <tr>
+      <td><%= item.name%></td>
+      <td><%= item.value%>円</td>
+      <td><span class=<%= item.category %>><%= item.category%></span></td>
+      <td><%= item.memo%></td>
+      <td><%= link_to  "編集", edit_item_path(@room, item) %></td>
+      <td><%= link_to  "削除", item_path(item), method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
+    </tr>
+    <%end%>
+  </tbody>
+</table>
+<h2>項目別支出合計</h2>
+<table>
+  <thead>
+    <tr>
+    <% @total_values.each_key do |key| %>
+      <td class=<%= key %>><%= key %></td>
+    <% end %>
+      <td>合計支出</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <% @total_values.each_value do |value| %>
+        <td><%= value %>円</td>
+      <% end %>
+      <td><%= total_cost%>円</td>
+    </tr>
+  </tbody>
+</table>
+<%= link_to  "<<戻る", :back %>

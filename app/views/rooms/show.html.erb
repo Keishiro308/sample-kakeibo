@@ -1,0 +1,40 @@
+<%= link_to  "<<戻る", :back %>
+
+<h1>家計簿名：<%= @room.name%></h1>
+
+<table class='month_total_cost_table'>
+  <thead>
+    <tr>
+      <th><%="#{@date.month}月の支出合計"%></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @month_total_cost%>円</td>
+    </tr>
+  </tbody>
+</table>
+<%= month_calendar events: @items do |date, items| %>
+  <%= link_to  date.day, "/rooms/#{@room.id}/#{date}" %>
+  <% total_value = 0 %>
+
+  <% items.each do |item| %>
+    <% total_value += item.value %>
+  <% end %>
+  <% unless total_value == 0 %>
+    <div class='day_total'>
+      <%= "#{total_value}円 " %>
+    </div>
+  <% end %>
+  
+<% end %>
+<% @room.items.each do |item| %>
+  
+<% end %>
+<div class="data">
+  <%= pie_chart @percentages, title: "#{@date.month}月の項目別支出割合", suffix: "%", height: "700px", id: 'pie-chart'%>
+  <%= column_chart @year_total_cost, title: "#{@date.year}年の月別合計支出", suffix: '円', height: "700px",  id: 'column-chart' %>
+</div>
+
+<%= link_to  "追加", new_item_path(@room) %>
+<%= link_to  "招待", new_invite_path(@room) %>

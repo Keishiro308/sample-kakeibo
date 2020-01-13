@@ -1,0 +1,32 @@
+<div class="tabs">
+      <input id="all" type="radio" name="tab_item" checked>
+      <label class="tab_item" for="all">家計簿一覧</label>
+      <input id="invited" type="radio" name="tab_item">
+      <label class="tab_item" for="invited">招待されている家計簿</label>
+      <input id="inviting" type="radio" name="tab_item">
+      <label class="tab_item" for="inviting">招待したユーザー</label>
+      <div class="tab_content" id="all_content">
+        <ul class='room-card'>
+          <% rooms.each do |room| %>
+              <li><%= link_to  room.name, room_path(room) %></li>
+          <% end %>
+        </ul>
+      </div>
+      <div class="tab_content" id="invited_content">
+          <% inviteds.each do |invited| %>
+            <div class='invite-card'>
+              <%= invited.room.name%>に
+              <%= invited.inviting_user.name%>さんから招待されました
+              <%= link_to  "参加", "/invites/#{invite.id}/rooms/add", method: :post %>
+            </div>
+          <% end %>
+      </div>
+      <div class="tab_content" id="inviting_content">
+          <% current_user.invites.each do |invite| %>
+            <div class='invite-card'>
+              <%= invite.invited_user.name%>さんを<%= invite.room.name%>に招待しました
+              <%= link_to  "招待を取り消す", invite_path(invite), method: :delete, data: { confirm: '招待を削除してもよろしいですか？' } %>
+            </div>
+          <% end %>
+      </div>
+  </div>

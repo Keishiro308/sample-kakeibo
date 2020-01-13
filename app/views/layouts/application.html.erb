@@ -10,9 +10,28 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%=link_to  "logout", destroy_user_session_path, method: :delete%>
+    <ul class='nav'>
+      <li><%=link_to  "ホーム", root_path %></li>
+      <% if user_signed_in? %>
+        <li><%=link_to  "ログアウト", destroy_user_session_path, method: :delete%></li>
+        <li class='dropdown'>
+          <a class="dropbtn">ユーザー</a>
+          <div class="dropdown-content">
+            <%= link_to  "マイページ", user_path(current_user) %>
+            <%= link_to  "ユーザー情報", user_info_path(current_user) %>
+            <%= link_to  "ユーザー編集", edit_user_registration_path %>
+          </div>
+        </li>
+      <% else %>
+        <li><%=link_to  "ログイン", new_user_session_path%></li>
+      <% end %>
+      
+    </ul>
+    <% if notice || alert %>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+    <% end %>
+    
     <%= yield %>
   </body>
 </html>
