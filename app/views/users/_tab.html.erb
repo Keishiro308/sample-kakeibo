@@ -6,11 +6,11 @@
       <input id="inviting" type="radio" name="tab_item">
       <label class="tab_item" for="inviting">招待したユーザー</label>
       <div class="tab_content" id="all_content">
-        <ul class='room-card'>
+        <div class='room-card'>
           <% rooms.each do |room| %>
-              <li><%= link_to  room.name, room_path(room) %></li>
+              <p><%= link_to  room.name, room_path(room) %></p>
           <% end %>
-        </ul>
+        </div>
       </div>
       <div class="tab_content" id="invited_content">
           <% inviteds.each do |invited| %>

@@ -1,4 +1,9 @@
 <%= render 'tab', rooms: @rooms, inviteds: @inviteds %>
 
-<%= link_to '追加', new_room_path%>
+<div class="add_btn">
+  <%= link_to new_room_path do%>
+  <%= icon 'fas', 'plus'%>
+  
+  <% end %>
+</div>
 

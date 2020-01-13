@@ -1,14 +1,21 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+h1{
+  text-align: center;
+  font-size: 40px;
+}
 #user_info{
   border-collapse: collapse;
-
+  margin: auto;
+  height: 60vh;
+  width: 50vw;
   tbody{
     tr{
-      border-bottom: rgb(0, 252, 150) 1px solid;
-
+      border-bottom: #5ab4bd 2px solid;
+      line-height: 30px;
       td{
+        font-size: 30px;
       }
     }
   }

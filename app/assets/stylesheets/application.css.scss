@@ -11,13 +11,17 @@
  * It is generally better to create a new file per style scope.
  *
  *= require simple_calendar
- *= require_tree .
  *= require_self
+ *= require_tree .
+
  */
+
+ @import "font-awesome-sprockets";
+ @import "font-awesome";
  
  body{
-   margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
  }
 
  
@@ -29,11 +33,11 @@ ul.nav {
   background-color: #333;
 }
 
-ul.nav li {
+li {
   float: left;
 }
 
-ul.nav li a, .dropbtn {
+li a, .dropbtn {
   display: inline-block;
   color: white;
   text-align: center;
@@ -66,7 +70,7 @@ ul.nav li.dropdown {
   text-align: left;
 }
 
-.dropdown-content a:hover {background-color: #f1f1f1;}
+.dropdown-content a:hover {color: #f1f1f1;}
 
 .dropdown:hover .dropdown-content {
   display: block;
@@ -88,21 +92,23 @@ textarea:focus {
 
 /*tab*/
 .tabs {
+  margin: 0 auto;
   margin-top: 50px;
   padding-bottom: 40px;
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  width: 700px;
-  margin: 0 auto;}
+  width: 70%;
+  font-size: 30px;
+}
 
 
 .tab_item {
   width: calc(100%/3);
-  height: 50px;
+  height: 80px;
   border-bottom: 3px solid #5ab4bd;
   background-color: #d9d9d9;
-  line-height: 50px;
-  font-size: 16px;
+  line-height: 80px;
+  font-size: 32px;
   text-align: center;
   color: #565656;
   display: block;
@@ -110,10 +116,11 @@ textarea:focus {
   text-align: center;
   font-weight: bold;
   transition: all 0.2s ease;
+  &:hover{
+    opacity: .75;
+  }
 }
-.tab_item:hover {
-  opacity: 0.75;
-}
+
 
 input[name="tab_item"] {
   display: none;
@@ -136,4 +143,69 @@ input[name="tab_item"] {
 .tabs input:checked + .tab_item {
   background-color: #5ab4bd;
   color: #fff;
+}
+
+/*btn*/
+.add_btn{
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  background-color: #5ab4bd;
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  &:hover{
+    opacity: .75;
+  }
+  a{
+    display: block;
+    font-size: 25px;
+    color: white;
+    line-height: 60px;
+    text-align: center;
+  }
+}
+
+.add_user_btn{
+  position: fixed;
+  bottom: 40px;
+  right: 120px;
+  background-color: #2501ff;
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  &:hover{
+    opacity: .75;
+  }
+  a{
+    display: block;
+    font-size: 25px;
+    color: white;
+    line-height: 60px;
+    text-align: center;
+  }
+}
+.back_btn{
+  margin-top: 20px;
+  margin-left: 10px;
+  background-color: #12d600;
+  border: 1px solid #12d600;
+  height: 60px;
+  width: 80px;
+  border-radius: 5px;
+  &:hover{
+    a{
+      color: #12d600;
+    }
+    background-color: white;
+    border: 1px solid #12d600;
+  }
+  a{
+    display: block;
+    font-size: 25px;
+    line-height: 60px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+  }
 }
