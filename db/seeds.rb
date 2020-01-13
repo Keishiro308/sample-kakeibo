@@ -11,11 +11,13 @@ User.create!(
       email: 'test1@test.com',
       password: '111111',
       name: 'テスト１',
+      uniqie_id: 'test1'
     },
     {
       email: 'test2@test.com',
       password: '222222',
       name: 'テスト２',
+      uniqie_id: 'test2'
     }
   ]
 )
