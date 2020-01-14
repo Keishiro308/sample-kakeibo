@@ -1,12 +1,36 @@
+<div class="form_card">
 <%= form_with model:item do |f| %>
-  <%= f.label :name, "名前" %>
-  <%= f.text_field :name %>
-  <%= f.label :value, "金額（半角数字）" %>
-  <%= f.text_field :value %>
-  <%= select_tag 'item[category]', options_for_select(options, selected: item.category) %>
-  <%= f.date_field :date %>
-  <%= f.text_area :memo %>
+  <div class="field">
+    <%= f.text_field :name, class: 'entry_field' %>
+
+    <%= f.label :name, "名前" %>
+    <span class='focus_line'></span>
+
+
+  </div>
+  <div class="field">
+    <%= f.text_field :value, class: 'entry_field' %>
+    <%= f.label :value, "金額（半角数字）" %>
+    <span class='focus_line'></span>
+
+
+  </div>
+  <div class="select_field">
+    <label>
+      <%= select_tag 'item[category]', options_for_select(options, selected: item.category) %>
+    </label>
+  </div>
+  <div class="date_field">
+    <%= f.label :date, "日付" %>
+    <%= f.date_field :date %>
+  </div>
+  <div class="textarea_field">
+    <%= f.label :memo, "備考" %>
+    <%= f.text_area :memo %>
+  </div>
   <%= f.hidden_field :room_id, value: params[:room_id]  %>
-  <%= f.submit %>
+
+    <%= f.submit class: 'btn' %>
 
 <% end %>
+</div>

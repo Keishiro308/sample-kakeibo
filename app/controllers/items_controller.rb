@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   
   def new
     @options = [
-      ['ーー選択してくださいーー', ''],
+      ['ーー項目を選択してくださいーー', ''],
       ['食費', '食費'],
       ['日用品', '日用品'],
       ['交通費', '交通費'],
@@ -37,7 +37,7 @@ class ItemsController < ApplicationController
 
   def edit
     @options = [
-      ['ーー選択してくださいーー', ''],
+      ['ーー項目を選択してくださいーー', ''],
       ['食費', '食費'],
       ['日用品', '日用品'],
       ['交通費', '交通費'],

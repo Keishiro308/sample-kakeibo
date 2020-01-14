@@ -1,8 +1,12 @@
+<div class="form_card">
+<h2>家計簿を作成</h2>
 <%= form_with model:@room do |f| %>
-  <div class="form-container">
+  <div class="field">
+    <%= f.text_field :name, placeholder: '家計簿の名前を入力してください', class: 'entry_field' %>
     <%= f.label :name, "名前" %>
-    <%= f.text_field :name, placeholder: '家計簿の名前を入力してください' %>
-    <%= f.submit '作成' %>
+    <span class="focus_line"></span>
   </div>
+    <%= f.submit '作成', class: 'btn' %>
   
 <% end %>
+</div>

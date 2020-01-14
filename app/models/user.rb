@@ -9,4 +9,5 @@ class User < ApplicationRecord
   has_many :rooms, through: :joins
   has_many :invites, class_name: 'Invite', foreign_key: 'inviting_id'
   has_many :inviteds, class_name: 'Invite', foreign_key: 'invited_id'
+  validates :name, presence: true, uniqueness: { case_sensitive: false }
 end
