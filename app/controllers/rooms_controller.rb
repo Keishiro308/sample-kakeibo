@@ -6,10 +6,10 @@ class RoomsController < ApplicationController
   end
 
   def create
-    @join = current_user.joins.build
+    debugger
     @room = Room.new(room_params)
     if @room.save
-      @join.save
+      current_user.rooms << @room
       flash[:notice] = '新しい家計簿を作りました'
       redirect_to current_user
     else
