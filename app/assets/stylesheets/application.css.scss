@@ -33,11 +33,11 @@ ul.nav {
   background-color: #333;
 }
 
-li {
+li.nav_link {
   float: left;
 }
 
-li a, .dropbtn {
+li.nav_link a, .dropbtn {
   display: inline-block;
   color: white;
   text-align: center;
@@ -46,7 +46,7 @@ li a, .dropbtn {
 }
 
 ul.nav li a:hover, .dropdown:hover .dropbtn {
-  background-color: red;
+  background-color: #12d600;
 }
 
 ul.nav li.dropdown {
@@ -255,6 +255,28 @@ select::-ms-expand {
   font-size: 10px;
   display: block;
 }
+a{
+  &.btn_item{
+    width: 100px;
+    height: 50px;
+    background-color: #ff4101;
+    text-align: center;
+    border-radius: 15px;
+    color: white;
+    font-size: 20px;
+    line-height: 50px;
+    display: inline-block;
+    text-decoration: none;
+    margin: 0;
+  }
+  &.btn_delete_item{
+    background-color: #ff4101;
+  }
+  &.btn_edit_item{
+    background-color: #ffcb07;
+  }
+}
+
 
 /*tab*/
 .tabs {
@@ -271,7 +293,7 @@ select::-ms-expand {
 .tab_item {
   width: calc(100%/3);
   height: 80px;
-  border-bottom: 3px solid #5ab4bd;
+  border-bottom: 3px solid #12d600;
   background-color: #d9d9d9;
   line-height: 80px;
   font-size: 32px;
@@ -307,7 +329,7 @@ input[name="tab_item"] {
 }
 
 .tabs input:checked + .tab_item {
-  background-color: #5ab4bd;
+  background-color: #12d600;
   color: #fff;
 }
 
@@ -316,10 +338,19 @@ input[name="tab_item"] {
   position: fixed;
   bottom: 40px;
   right: 40px;
-  background-color: #5ab4bd;
+  background-color: #12d600;
   height: 60px;
   width: 60px;
   border-radius: 50%;
+  i.fas.fa-plus{
+    float: right;
+    position: absolute;
+    right: 12px;
+    bottom: 18px;
+    font-weight: bold;
+    color: white;
+    z-index: 2;
+  }
   &:hover{
     opacity: .75;
   }
@@ -329,6 +360,24 @@ input[name="tab_item"] {
     color: white;
     line-height: 60px;
     text-align: center;
+    width: 100%;
+    height: 100%;
+    i{
+      &.fa-yen-sign{
+        &::before{
+          position: absolute;
+          left: 15px;
+          top: 18px;
+        }
+      }
+      &.fa-book{
+        &::before{
+          position: absolute;
+          left: 10px;
+          top: 18px;
+        }
+      }
+    }
   }
 }
 
@@ -375,3 +424,4 @@ input[name="tab_item"] {
     text-decoration: none;
   }
 }
+

@@ -11,9 +11,9 @@
 
   <body>
     <ul class='nav'>
-      <li><%=link_to  "ホーム", root_path %></li>
+      <li class='nav_link'><%=link_to  "ホーム", root_path %></li>
       <% if user_signed_in? %>
-        <li><%=link_to  "ログアウト", destroy_user_session_path, method: :delete%></li>
+        <li class='nav_link'><%=link_to  "ログアウト", destroy_user_session_path, method: :delete%></li>
         <li class='dropdown'>
           <a class="dropbtn">ユーザー</a>
           <div class="dropdown-content">
@@ -23,7 +23,7 @@
           </div>
         </li>
       <% else %>
-        <li><%=link_to  "ログイン", new_user_session_path%></li>
+        <li class='nav_link'><%=link_to  "ログイン", new_user_session_path%></li>
       <% end %>
       
     </ul>

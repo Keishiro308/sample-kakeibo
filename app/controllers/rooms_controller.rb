@@ -1,27 +1,48 @@
 class RoomsController < ApplicationController
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
   before_action :correct_member, only: [:show_date, :show, :destory]
   def new
     @room = Room.new
   end
 
   def create
-    if current_user.rooms << Room.new(room_params)
-      flash[:success] = '新しい家計簿を作りました'
+    @join = current_user.joins.build
+    @room = Room.new(room_params)
+    if @room.save
+      @join.save
+      flash[:notice] = '新しい家計簿を作りました'
       redirect_to current_user
     else
-      flash[:alert] = '家計簿を作れませんでした'
-      render new
+      flash.now[:alert] = '家計簿を作れませんでした'
+      render 'new'
     end
   end
-  def destroy
-    room = current_user.rooms.find(params[:id])
-    if room.destroy
-      flash[:success] = '家計簿を削除しました'
+
+  def edit
+    @room = Room.find(params[:id])
+  end
+
+  def update
+    @room = Room.find(params[:id])
+    if @room.update(room_params) || @room
+      flash[:notice] = '名前を変更しました'
       redirect_to current_user
     else
-      flash[:alert] = '家計簿を削除できませんでした'
+      flash[:alert] = '名前を変更できませんでした'
       redirect_to current_user
+    end
+  end
+  
+  
+
+  def destroy
+    room = Room.find(params[:id])
+    if room.destroy
+      flash[:success] = '家計簿を削除しました'
+      redirect_to root_path
+    else
+      flash[:alert] = '家計簿を削除できませんでした'
+      redirect_to root_path
     end
   end
   
@@ -32,6 +53,7 @@ class RoomsController < ApplicationController
     term = @date.beginning_of_month..@date.end_of_month
     term_year = @date.beginning_of_year..@date.end_of_year
     @items = @room.items.where(date: term)
+    @total_values = @items.group(:category).sum(:value)
     @month_total_cost = Item.where(date: term, room_id: params[:id]).sum(:value)
     @year_total_cost = {
       "1月":0,

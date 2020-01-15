@@ -1,14 +1,19 @@
 <div class="tabs">
       <input id="all" type="radio" name="tab_item" checked>
-      <label class="tab_item" for="all">家計簿一覧</label>
+      <label class="tab_item" for="all">家計簿一覧 <%= icon 'fas', 'book-open' %></label>
       <input id="invited" type="radio" name="tab_item">
-      <label class="tab_item" for="invited">招待されている家計簿</label>
+      <label class="tab_item" for="invited">招待されている家計簿 <%= icon 'far', 'envelope' %></label>
       <input id="inviting" type="radio" name="tab_item">
-      <label class="tab_item" for="inviting">招待したユーザー</label>
+      <label class="tab_item" for="inviting">招待したユーザー <%= icon 'far', 'user' %></label>
       <div class="tab_content" id="all_content">
         <div class='room-card'>
           <% rooms.each do |room| %>
-              <p><%= link_to  room.name, room_path(room) %></p>
+              <div>
+                <%=   link_to  room.name, room_path(room) %>
+                <%= link_to  "削除", room_path(room), method: :delete, 
+                data: { confirm: '本当に削除しますか？' }, class: 'btn_item btn_delete_item' %>
+                <%= link_to  "名前変更", edit_room_path(room), class: 'btn_item btn_edit_item' %>
+              </div>
           <% end %>
         </div>
       </div>

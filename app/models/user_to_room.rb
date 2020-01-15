@@ -1,4 +1,5 @@
 class UserToRoom < ApplicationRecord
-  belongs_to :user, dependent: :destroy
-  belongs_to :room, dependent: :destroy
+  belongs_to :user
+  belongs_to :room
 end
+

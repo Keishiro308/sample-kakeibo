@@ -1,6 +1,16 @@
 ---
 ja:
   activerecord:
+    attributes:
+      item:
+        value: 金額
+        category: カテゴリー
+        date: 日付
+        memo: 備考
+      room:
+        name: 名前
+      user:
+        unique_id: ID
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

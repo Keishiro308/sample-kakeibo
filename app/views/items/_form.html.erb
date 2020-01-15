@@ -1,5 +1,6 @@
 <div class="form_card">
-<%= form_with model:item do |f| %>
+<%= form_with model:item, local: true do |f| %>
+<%= render 'shared/error_messages', object: f.object %>
   <div class="field">
     <%= f.text_field :name, class: 'entry_field' %>
 
@@ -29,6 +30,7 @@
     <%= f.text_area :memo %>
   </div>
   <%= f.hidden_field :room_id, value: params[:room_id]  %>
+  <%= f.hidden_field :user_id, value: current_user.id  %>
 
     <%= f.submit class: 'btn' %>
 

@@ -13,11 +13,39 @@
   }
 }
 
+.show_calendar{
+  display: flex;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  .cost_calendar{
+    width: 80%;
+  }
+}
+
+.calendar_side{
+  width: 20%;
+}
 
 table{
+  
+  thead{
+    tr{
+      th{
+        text-align: center !important;
+      }
+    }
+  }
+  tbody{
+    tr{
+      td{
+        text-align: center;
+      }
+    }
+  }
   &.month_total_cost_table{
     border-collapse: collapse;
-    margin-left: 15px;
+    margin-top: 60px;
     thead{
       tr{
         th{
@@ -36,89 +64,123 @@ table{
       }
     }
   }
-  thead{
-    tr{
-      th{
-        text-align: center !important;
+  &.month_total_cost_table{
+    font-size: 30px;
+  }
+  &#cost-detail,
+  &#cost-group-by-item{
+    border-collapse: collapse;
+    width: 80%;
+    border-color: black;
+    border-spacing: 0;
+    font-size: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 100px;
+    thead{
+      tr{
+        border-bottom: 1px solid #ddd;
+        th{
+          padding: 10px;
+          &+th{
+            border-left: 1px solid #ddd;
+          }
+          text-align: center;
+        }
       }
     }
-  }
-  tbody{
-    tr{
-      td{
-        text-align: center;
-        span{
-          &.badge{
-            color: white;
-            padding: 3px;
-            border-radius: 3px;
-            width: 50px;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
+    tbody{
+      tr{
+        td{
+          padding: 10px;
+          text-align: center;
+          &+td{
+            border-left: 1px solid #ddd;
           }
-          &.食費{
-            background-color: rgb(252, 152, 0);
-          }
-          &.日用品{
-            background-color: rgb(15, 252, 0);
-          }
-          &.交通費{
-            background-color: rgb(252, 247, 0);
-            color: rgb(101, 101, 101);
-          }
-          &.趣味{
-            background-color: rgb(0, 252, 233);
-          }
-          &.衣服{
-            background-color: rgb(0, 29, 252);
-          }
-          &.美容{
-            background-color: rgb(223, 2, 195);
-          }
-          &.交際費{
-            background-color: rgb(139, 252, 0);
-          }
-          &.教養・教育{
-            background-color: rgb(137, 0, 252);
-          }
-          &.健康・医療{
-            background-color: rgb(52, 182, 4);
-          }
-          &.金融{
-            background-color: rgb(228, 224, 53);
-          }
-          &.住宅{
-            background-color: rgb(26, 97, 187);
-          }
-          &.水道光熱費{
-            background-color: rgb(255, 61, 61);
-          }
-          &.通信費{
-            background-color: rgb(121, 68, 255);
-          }
-          &.税金{
-            background-color: rgb(4, 94, 58);
-          }
-          &.自動車{
-            background-color: rgb(0, 1, 2);
-          }
-          &.その他{
-            background-color: rgb(101, 101, 101);
+          &.delete_btn_cell,
+          &.edit_btn_cell{
+            border: 1px solid white;
           }
         }
       }
     }
   }
-  &.month_total_cost_table{
-    font-size: 30px;
+}
+
+span{
+  &.badge{
+    color: white;
+    padding: 3px;
+    border-radius: 3px;
+    width: 100px;
+    display: inline-block;
+    margin: 0;
+  }
+  &.食費{
+    background-color: rgb(252, 152, 0);
+  }
+  &.日用品{
+    background-color: rgb(15, 252, 0);
+  }
+  &.交通費{
+    background-color: rgb(252, 247, 0);
+    color: rgb(101, 101, 101);
+  }
+  &.趣味{
+    background-color: rgb(0, 252, 233);
+  }
+  &.衣服{
+    background-color: rgb(0, 29, 252);
+  }
+  &.美容{
+    background-color: rgb(223, 2, 195);
+  }
+  &.交際費{
+    background-color: rgb(139, 252, 0);
+  }
+  &.教養・教育{
+    background-color: rgb(137, 0, 252);
+  }
+  &.健康・医療{
+    background-color: rgb(52, 182, 4);
+  }
+  &.金融{
+    background-color: rgb(228, 224, 53);
+  }
+  &.住宅{
+    background-color: rgb(26, 97, 187);
+  }
+  &.水道光熱費{
+    background-color: rgb(255, 61, 61);
+  }
+  &.通信費{
+    background-color: rgb(121, 68, 255);
+  }
+  &.税金{
+    background-color: rgb(4, 94, 58);
+  }
+  &.自動車{
+    background-color: rgb(0, 1, 2);
+  }
+  &.その他{
+    background-color: rgb(101, 101, 101);
   }
 }
+
+.tables{
+  width: 100%;
+  margin-left: auto;
+  margin-left: auto;
+  h2{
+    margin-left: 160px;
+  }
+}
+
 .data{
   margin: 15px;
   display: flex;
   margin-top: 30px;
-  max-width: 100%;
+  width: 90%;
   #pie-chart{
     width: 50% !important;
   }
@@ -174,4 +236,3 @@ table{
 
   .has-events {}
 }
-

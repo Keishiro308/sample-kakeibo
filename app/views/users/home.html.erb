@@ -1,11 +1,6 @@
 <% if user_signed_in? %>
   <%= render 'tab', rooms: @rooms, inviteds: @inviteds %>
-  <div class="add_btn">
-    <%= link_to new_room_path do%>
-    <%= icon 'fas', 'plus'%>
-    
-    <% end %>
-  </div>
+  <%= render 'add_button'%>
 <% else %>
   <h1>ようこそ、家計簿アプリへ</h1>
 <% end %>

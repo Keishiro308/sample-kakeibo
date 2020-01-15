@@ -4,12 +4,12 @@ Rails.application.routes.draw do
   }
   get '/rooms/:room_id/items/new', to: 'items#new', as: :new_item
   get '/rooms/:room_id/items/:id/edit', to: 'items#edit', as: :edit_item
-  get '/rooms/:id/:date', to: 'rooms#show_date', as: :room_date
   get '/rooms/:id/invites/new', to: 'invites#new', as: :new_invite
   get '/users/:id/info', to: 'users#info', as: :user_info
   resources :users, only: :show
   resources :items
   resources :rooms
+  get '/rooms/:id/:date', to: 'rooms#show_date', as: :room_date
   resources :invites
   post '/invites/:id/rooms/add', to: 'invites#add'
   root to: 'users#home'

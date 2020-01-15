@@ -1,43 +1,56 @@
-<%= render 'shared/back' %>
+<%= render 'shared/back', path: root_path %>
 
 <h1>家計簿名：<%= @room.name%></h1>
+<div class="show_calendar">
+  <div class="cost_calendar">
+    <%= month_calendar events: @items do |date, items| %>
+      <%= link_to  date.day, "/rooms/#{@room.id}/#{date}" %>
+      <% total_value = 0 %>
 
-<table class='month_total_cost_table'>
-  <thead>
-    <tr>
-      <th><%="#{@date.month}月の支出合計"%></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><%= @month_total_cost%>円</td>
-    </tr>
-  </tbody>
-</table>
-<%= month_calendar events: @items do |date, items| %>
-  <%= link_to  date.day, "/rooms/#{@room.id}/#{date}" %>
-  <% total_value = 0 %>
-
-  <% items.each do |item| %>
-    <% total_value += item.value %>
-  <% end %>
-  <% unless total_value == 0 %>
-    <div class='day_total'>
-      <%= "#{total_value}円 " %>
+      <% items.each do |item| %>
+        <% total_value += item.value %>
+      <% end %>
+      <% unless total_value == 0 %>
+        <div class='day_total'>
+          <%= "#{total_value}円 " %>
+        </div>
+      <% end %>
+      
+    <% end %>
+  </div>
+  <div class="calendar_side">
+    <table class='month_total_cost_table'>
+      <thead>
+        <tr>
+          <th><%="#{@date.month}月の支出合計"%></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= @month_total_cost%>円</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="side_link">
+      <ul>
+        <li><%= link_to  "支出詳細", "#cost-detail-header" %></li>
+        <li><%= link_to  "項目別支出合計", "#cost-group-by-item-header" %></li>
+      </ul>
     </div>
-  <% end %>
-  
-<% end %>
+  </div>
+</div>
 <% @room.items.each do |item| %>
   
 <% end %>
+<%= render 'table', items: @items, room: @room %>
 <div class="data">
   <%= pie_chart @percentages, title: "#{@date.month}月の項目別支出割合", suffix: "%", height: "700px", id: 'pie-chart'%>
   <%= column_chart @year_total_cost, title: "#{@date.year}年の月別合計支出", suffix: '円', height: "700px",  id: 'column-chart' %>
 </div>
 <div class="add_btn">
+  <%= icon 'fas', 'plus' %>
   <%= link_to  new_item_path(@room) do %>
-    <%= icon 'fas', 'plus' %>
+    <%= icon 'fas', 'yen-sign'%>
   <%end %>
 </div>
 <div class="add_user_btn">
@@ -45,3 +58,4 @@
     <%= icon 'fas', 'user-plus' %>
   <%end%>
 </div>
+<%= render 'shared/back', path: root_path %>

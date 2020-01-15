@@ -26,12 +26,32 @@ class ItemsController < ApplicationController
   end
 
   def create
-    item = Item.new(item_params)
-    if item.save
-      flash.now[:notice] = '追加しました'
-      redirect_to room_path(item.room.id)
+    @item = Item.new(item_params)
+    @options = [
+      ['ーー項目を選択してくださいーー', ''],
+      ['食費', '食費'],
+      ['日用品', '日用品'],
+      ['交通費', '交通費'],
+      ['趣味', '趣味'],
+      ['衣服', '衣服'],
+      ['美容', '美容'],
+      ['交際費', '交際費'],
+      ['教養・教育', '教養・教育'],
+      ['健康・医療', '健康・医療'],
+      ['金融', '金融'],
+      ['住宅', '住宅'],
+      ['水道光熱費', '水道光熱費'],
+      ['通信費', '通信費'],
+      ['税金', '税金'],
+      ['自動車', '自動車'],
+      ['その他', 'その他']
+    ]
+    if @item.save
+      flash[:notice] = '追加しました'
+      redirect_to room_path(@item.room.id)
     else
-    
+      flash.now[:alert] = '追加できませんでした'
+      render 'new'
     end
   end
 
@@ -83,7 +103,7 @@ class ItemsController < ApplicationController
 
   private
     def item_params
-      params.require(:item).permit(:room_id, :name, :category, :date, :value, :memo)
+      params.require(:item).permit(:room_id, :name, :category, :date, :value, :memo, :user_id)
     end
     def correct_member
       room = Room.find(params[:room_id])

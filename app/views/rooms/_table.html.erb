@@ -1,0 +1,52 @@
+<div class="tables">
+  <h2 id='cost-detail-header'>支出詳細</h2>
+  <table id='cost-detail'>
+    <thead>
+      <tr>
+        <th>名前</th>
+        <th>金額</th>
+        <th>日付</th>
+        <th>作成者</th>
+        <th>カテゴリー</th>
+        <th>備考</th>
+      </tr>
+    </thead>
+    <tbody>
+    <%total_cost = 0%>
+      <% items.each do |item|%>
+      <% total_cost += item.value%>
+      <tr>
+        <td><%= item.name%></td>
+        <td><%= item.value%>円</td>
+        <td><%= item.date.day%>日</td>
+        <td><%= item.user.name%>さん</td>
+        <td><span class="badge <%= item.category %>"><%= item.category%></span></td>
+        <td><%= item.memo%></td>
+        <td class='edit_btn_cell'><%= link_to  "編集", edit_item_path(room, item), class: 'btn_item btn_edit_item' %></td>
+        <td class='delete_btn_cell'><%= link_to  "削除", item_path(item), method: :delete, 
+        data: { confirm: '本当に削除しますか？' }, class: 'btn_item btn_delete_item' %></td>
+      </tr>
+      <%end%>
+    </tbody>
+  </table>
+
+  <h2 id ='cost-group-by-item-header'>項目別支出合計</h2>
+  <table id ='cost-group-by-item'>
+    <thead>
+      <tr>
+      <% @total_values.each_key do |key| %>
+        <th class=<%= key %>><span class="badge <%=key%>"><%= key %></span></th>
+      <% end %>
+        <th>合計支出</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <% @total_values.each_value do |value| %>
+          <td><%= value %>円</td>
+        <% end %>
+        <td><%= total_cost%>円</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
