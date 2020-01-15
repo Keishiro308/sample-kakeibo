@@ -18,5 +18,6 @@ module KakeiboPrototype
     # the framework and any gems in your application.
     config.beginning_of_week = :sunday
     config.time_zone = 'Tokyo'
+    config.assets.initialize_on_precompile = false
   end
 end
