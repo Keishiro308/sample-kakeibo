@@ -4,7 +4,10 @@ $(function(){
     name_field.next('label').show();
   });
   name_field.on('blur' ,function(){
-    name_field.next('label').fadeOut();
+    let val = name_field.val();
+    if (val.match(/.+/)) {
+      name_field.next('label').fadeOut();
+    }
   });
   let value_field = $('#value_field');
   value_field.keyup(function(){
