@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   get '/rooms/:id/invites/new', to: 'invites#new', as: :new_invite
   get '/users/:id/info', to: 'users#info', as: :user_info
   resources :users, only: :show
-  resources :items
   resources :rooms
+  resources :items, except: :new
   get '/rooms/:id/:date', to: 'rooms#show_date', as: :room_date
   resources :invites
   post '/invites/:id/rooms/add', to: 'invites#add'

@@ -19,5 +19,13 @@ module KakeiboPrototype
     config.beginning_of_week = :sunday
     config.time_zone = 'Tokyo'
     config.assets.initialize_on_precompile = false
+    config.action_view.field_error_proc = Proc.new do |html_tag, instance|
+      if instance.kind_of?(ActionView::Helpers::Tags::Label)
+        # skip when label
+        html_tag.html_safe
+      else
+        Nokogiri::HTML.fragment(html_tag).search('input', 'textarea', 'select').add_class('is_error').to_html.html_safe
+      end
+    end
   end
 end

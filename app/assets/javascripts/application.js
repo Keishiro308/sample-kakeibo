@@ -14,32 +14,11 @@
 //= require Chart.bundle
 //= require jquery
 //= require moment
-//= require fullcalendar
-//= require fullcalendar/locale-all
+
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
 //= require_tree .
 
-$(function () {
-  function eventCalendar() {
-      return $('#calendar').fullCalendar({
-        locale: 'ja',
-        header: {
-          left: 'prev, next, today',
-          center: 'title',
-          right: 'month, agendaWeek, agendaDay'
-        },
-        navLinks: true,
-        events: '/rooms/show.json'
-      });
-  };
-  function clearCalendar() {
-      $('#calendar').html('');
-  };
-  $(document).on('ready turbolinks:load', function () {
-    eventCalendar();
-  });
-  $(document).on('turbolinks:before-cache', clearCalendar);
-});
+
 
