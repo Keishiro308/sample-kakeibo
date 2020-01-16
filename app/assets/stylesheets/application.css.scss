@@ -108,9 +108,11 @@ ul.nav li.dropdown {
     }
   }
   .field{
-    position: relative;
     width: 90%;
     margin: 40px auto;
+    .form_wrap{
+      position: relative;
+    }
     .focus_line{
       transition: 0.4s;
       position: absolute;
@@ -218,6 +220,13 @@ ul.nav li.dropdown {
       &.is_error{
         border-color: #f00;
       }
+    }
+  }
+  .error_message{
+    height: 20px;
+    span{
+      font-size: 15px;
+      color: #f00;
     }
   }
 }

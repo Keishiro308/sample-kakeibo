@@ -2,28 +2,34 @@
 <%= form_with model:item, local: true do |f| %>
 <%= render 'shared/error_messages', object: f.object %>
   <div class="field">
-    <%= f.text_field :name, class: 'entry_field' %>
+    <div class="form_wrap">
+      <%= f.text_field :name, class: 'entry_field' %>
 
-    <%= f.label :name, "名前" %>
-    <span class='focus_line'></span>
-
+      <%= f.label :name, "名前" %>
+      <span class='focus_line'></span>
+    </div>
 
   </div>
   <div class="field">
-    <%= f.text_field :value, class: 'entry_field required', id: 'value_field' %>
-    <%= f.label :value, "金額（半角数字）" %>
-    <span class='focus_line'></span>
-
+    <div class="form_wrap" id='value_field_wrap'>
+      <%= f.text_field :value, class: 'entry_field required', id: 'value_field' %>
+      <%= f.label :value, "金額（半角数字）" %>
+      <span class='focus_line'></span>
+    </div>
+    <div class="error_message"></div>
 
   </div>
   <div class="select_field">
     <label class='select'>
-      <%= f.select :category, options, {selected: item.category},  {class: 'select', id: 'select'} %>
+      <%= f.select :category, options, {selected: item.category},  {id: 'select'} %>
     </label>
+    <div class="error_message"></div>
   </div>
   <div class="date_field">
     <%= f.label :date, "日付", id: 'date' %>
     <%= f.date_field :date, class: 'required' %>
+    <div class="error_message"></div>
+
   </div>
   <div class="textarea_field">
     <%= f.label :memo, "備考" %>
