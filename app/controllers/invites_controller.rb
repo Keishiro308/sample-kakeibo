@@ -3,6 +3,7 @@ class InvitesController < ApplicationController
   before_action :correct_member, only: [:new, :show]
   def new
     @invite = Invite.new
+    @room = Room.find(params[:id])
   end
   
   def create
