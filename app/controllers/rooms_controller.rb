@@ -36,7 +36,11 @@ class RoomsController < ApplicationController
 
   def destroy
     room = Room.find(params[:id])
+    invites = Invite.where(room_id: room.id)
     if room.destroy
+      invites.each do |invite|
+        invite.destroy
+      end
       flash[:success] = '家計簿を削除しました'
       redirect_to root_path
     else
