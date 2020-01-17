@@ -35,7 +35,7 @@
     <%= f.label :memo, "備考" %>
     <%= f.text_area :memo %>
   </div>
-  <%= f.hidden_field :room_id, value: params[:room_id]  %>
+  <%= f.hidden_field :room_id, value: @room.id  %>
   <%= f.hidden_field :user_id, value: current_user.id  %>
 
     <%= f.submit class: 'btn' %>

@@ -23,10 +23,12 @@ class ItemsController < ApplicationController
       ['その他', 'その他']
     ]
     @item = Item.new
+    @room = Room.find(params[:room_id])
   end
 
   def create
     @item = Item.new(item_params)
+    @room = Room.find(item_params[:room_id]) unless item_params[:room_id].nil?
     @options = [
       ['ーー項目を選択してくださいーー', ''],
       ['食費', '食費'],
