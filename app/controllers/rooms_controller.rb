@@ -52,8 +52,10 @@ class RoomsController < ApplicationController
     term = @date.beginning_of_month..@date.end_of_month
     term_year = @date.beginning_of_year..@date.end_of_year
     @items = @room.items.where(date: term)
+    items_year = @room.items.where(date: term_year)
     @total_values = @items.group(:category).sum(:value)
-    @month_total_cost = Item.where(date: term, room_id: params[:id]).sum(:value)
+    @month_total_cost = @items.sum(:value)
+    year_total_cost = items_year.sum(:value)
     @year_total_cost = {
       "1月":0,
       "2月":0,
@@ -85,6 +87,9 @@ class RoomsController < ApplicationController
 
     @percentages = @items.group(:category).sum(:value).map{
       |k,v| [k, (v.to_f / @month_total_cost * 100).round]
+    }.to_h
+    @percentages_year = items_year.group(:category).sum(:value).map{
+      |k,v| [k, (v.to_f / year_total_cost * 100).round]
     }.to_h
   end
 

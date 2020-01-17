@@ -7,6 +7,7 @@ class Item < ApplicationRecord
     validates :date
     validates :room_id
   end
+  validates :value, numericality: { only_integer: true }
   def start_time
     self.date
   end

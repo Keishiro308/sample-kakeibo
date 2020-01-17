@@ -25,20 +25,36 @@
         </div>
       </div>
       <div class="tab_content" id="invited_content">
-          <% inviteds.each do |invited| %>
-            <div class='invite-card'>
-              <%= invited.room.name%>に
-              <%= invited.inviting_user.name%>さんから招待されました
-              <%= link_to  "参加", "/invites/#{invited.id}/rooms/add", method: :post %>
-            </div>
-          <% end %>
+        <div class="invited_card">
+            <% inviteds.each do |invited| %>
+              <div class='wrap'>
+                <div class="content">
+                    <%= invited.room.name%>に
+                    <%= invited.inviting_user.name%>さんから招待されました
+                </div>
+                <div class="">
+                  <%= link_to  "参加", "/invites/#{invited.id}/rooms/add", method: :post, class: 'btn_join_room btn_item' %>
+                </div>
+              </div>
+
+            <% end %>
+        </div>
+
       </div>
       <div class="tab_content" id="inviting_content">
-          <% current_user.invites.each do |invite| %>
-            <div class='invite-card'>
-              <%= invite.invited_user.name%>さんを<%= invite.room.name%>に招待しました
-              <%= link_to  "招待を取り消す", invite_path(invite), method: :delete, data: { confirm: '招待を削除してもよろしいですか？' } %>
+        <div class="invited_card">
+            <% current_user.invites.each do |invite| %>
+              <div class='wrap'>
+                <div class="content">
+                  <%= invite.invited_user.name%>さんを<%= invite.room.name%>に招待しました
+                </div>
+                <div>
+                  <%= link_to  "招待を取り消す", invite_path(invite), method: :delete, 
+                  data: { confirm: '招待を削除してもよろしいですか？' }, class: 'btn_item btn_delete_invite ' %>
+                </div>
             </div>
-          <% end %>
+            <% end %>
+        </div>
+
       </div>
   </div>

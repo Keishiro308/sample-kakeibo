@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   
   def new
     @options = [
-      ['ーー項目を選択してくださいーー', ''],
+      ['ーカテゴリー*を選択してくださいー', ''],
       ['食費', '食費'],
       ['日用品', '日用品'],
       ['交通費', '交通費'],
@@ -31,7 +31,7 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     @room = Room.find(item_params[:room_id]) unless item_params[:room_id].nil?
     @options = [
-      ['ーー項目を選択してくださいーー', ''],
+      ['ーカテゴリー*を選択してくださいー', ''],
       ['食費', '食費'],
       ['日用品', '日用品'],
       ['交通費', '交通費'],

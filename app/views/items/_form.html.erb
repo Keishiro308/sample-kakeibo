@@ -13,7 +13,7 @@
   <div class="field">
     <div class="form_wrap" id='value_field_wrap'>
       <%= f.text_field :value, class: 'entry_field required', id: 'value_field' %>
-      <%= f.label :value, "金額（半角数字）" %>
+      <%= f.label :value, "金額（半角数字）*" %>
       <span class='focus_line'></span>
     </div>
     <div class="error_message"></div>
@@ -26,7 +26,7 @@
     <div class="error_message"></div>
   </div>
   <div class="date_field">
-    <%= f.label :date, "日付", id: 'date' %>
+    <%= f.label :date, "日付*", id: 'date' %>
     <%= f.date_select :date, class: 'required', default: @the_day %>
     <div class="error_message"></div>
 
@@ -39,6 +39,7 @@
   <%= f.hidden_field :user_id, value: current_user.id  %>
 
     <%= f.submit class: 'btn' %>
-
+  *は必須項目
 <% end %>
 </div>
+<%= render 'shared/back', path: room_path(@room) %>

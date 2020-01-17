@@ -179,14 +179,15 @@ span{
   margin: 15px;
   display: flex;
   margin-top: 30px;
-  width: 80%;
+  width: 90%;
   margin-left: auto;
   margin-right: auto;
-  #pie-chart{
-    width: 50% !important;
-  }
+  #pie-chart,
+  #pie-chart-year,
   #column-chart{
-    width: 50% !important;
+    width: 33% !important;
+    box-sizing: border-box;
+    padding: 5px;
   }
 }
 
@@ -242,8 +243,12 @@ span{
   .has-events {}
 }
 
-.room_wrap{
+.room_wrap,
+.wrap{
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
+  .content{
+    display: inline;
+  }
 }
