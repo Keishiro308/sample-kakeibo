@@ -5,27 +5,38 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'entry_field'%>
-    <%= f.label :email %>
-    <span class='focus_line'></span>
+    <div class="form_wrap">
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'entry_field'%>
+      <%= f.label :email %>
+      <span class='focus_line'></span>
+    </div>
   </div>
 
   <div class="field">
-    <%= f.text_field :name, class: 'entry_field' %>
-    <%= f.label :name %>
+    <div class="form_wrap">
+
+      <%= f.text_field :name, class: 'entry_field' %>
+      <%= f.label :name %>
     <span class='focus_line'></span>
+    </div>
   </div>
 
   <div class="field">
-    <%= f.password_field :password, autocomplete: "new-password", class: 'entry_field' %>
-    <%= f.label :password, "パスワード(#{@minimum_password_length }文字以上)" %>
-    <span class='focus_line'></span>
+    <div class="form_wrap">
+
+      <%= f.password_field :password, autocomplete: "new-password", class: 'entry_field' %>
+      <%= f.label :password, "パスワード(#{@minimum_password_length }文字以上)" %>
+      <span class='focus_line'></span>
+    </div>
   </div>
 
   <div class="field">
-    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'entry_field' %>
-    <%= f.label :password_confirmation %>
-    <span class='focus_line'></span>
+    <div class="form_wrap">
+
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'entry_field' %>
+      <%= f.label :password_confirmation %>
+      <span class='focus_line'></span>
+    </div>
   </div>
 
   <div class="actions btn">

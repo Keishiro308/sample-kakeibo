@@ -24,6 +24,7 @@ class ItemsController < ApplicationController
     ]
     @item = Item.new
     @room = Room.find(params[:room_id])
+    @the_day = params[:date].nil? ? Date.today : Date.parse(params[:date])
   end
 
   def create
@@ -78,6 +79,7 @@ class ItemsController < ApplicationController
       ['その他', 'その他']
     ]
     @item = Item.find(params[:id])
+    @room = Room.find(params[:room_id]) unless params[:room_id].nil?
   end
   
   def update

@@ -23,12 +23,12 @@ class RoomsController < ApplicationController
 
   def update
     @room = Room.find(params[:id])
-    if @room.update(room_params) || @room
+    if (@room.update(room_params) || @room) && room_params[:name].present?
       flash[:notice] = '名前を変更しました'
       redirect_to current_user
     else
       flash[:alert] = '名前を変更できませんでした'
-      redirect_to current_user
+      render 'edit'
     end
   end
   
@@ -47,7 +47,7 @@ class RoomsController < ApplicationController
   
 
   def show
-    @room = Room.find(params[:id])
+    @room = Room.includes(:users).find(params[:id])
     @date = params[:start_date] ? Date.parse(params[:start_date]) : Date.today
     term = @date.beginning_of_month..@date.end_of_month
     term_year = @date.beginning_of_year..@date.end_of_year
@@ -69,8 +69,10 @@ class RoomsController < ApplicationController
       "12月":0
     }
 
-    month_costs = Item.where(date: term_year, room_id: params[:id]).group_by{ |item| item.date.month }
-    .map{
+    # {'1'　=>　[Itemの配列], '2' => [Itemの配列], ......}
+    month_hash = Item.where(date: term_year, room_id: params[:id]).group_by{ |item| item.date.month }
+    # {'1月' => 130, '2月' => 2400, .......}
+    month_costs = month_hash.map{
       |k, month_items| [
         "#{k}月", 
         month_items.map(&:value).inject{
@@ -92,6 +94,18 @@ class RoomsController < ApplicationController
     @items = @room.items.where(date: params[:date])
     @total_values = @items.group(:category).sum(:value)
   end
+
+  def exit
+    join = current_user.joins.find_by(room_id: params[:id])
+    room = current_user.rooms.find(params[:id])
+    if room.users.size == 1
+      room.destroy
+    end
+    join.destroy
+    flash[:notice] = "#{room.name}を退出しました"
+    redirect_to root_path
+  end
+  
   
   
   private

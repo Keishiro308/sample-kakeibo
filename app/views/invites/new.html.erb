@@ -2,10 +2,11 @@
 <h2>ユーザーを招待する</h2>
 <%= form_with model:@invite do |f| %>
   <div class="field">
-    <%= f.text_field :unique_id, placeholder: '招待したい人のIDを入力してください', class: 'entry_field' %>
-    <%= f.label :unique_id, "ID" %>
-    <span class="focus_line"></span>
-
+    <div class="form_wrap">
+      <%= f.text_field :unique_id, placeholder: '    招待したい人のIDを入力してください', class: 'entry_field' %>
+      <%= f.label :unique_id, "ID" %>
+      <span class="focus_line"></span>
+    </div>
   </div>
     <%= f.hidden_field :room_id, value: @room.id %>
     <%= f.hidden_field :inviting_id, value: current_user.id %>

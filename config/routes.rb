@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get '/rooms/:room_id/items/:id/edit', to: 'items#edit', as: :edit_item
   get '/rooms/:id/invites/new', to: 'invites#new', as: :new_invite
   get '/users/:id/info', to: 'users#info', as: :user_info
+  delete '/room/:id/exit', to: 'rooms#exit', as: :exit_room
   resources :users, only: :show
   resources :rooms
   resources :items, except: :new

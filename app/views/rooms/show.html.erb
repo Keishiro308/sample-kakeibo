@@ -1,5 +1,6 @@
 <%= render 'shared/back', path: root_path %>
 
+
 <h1>家計簿名：<%= @room.name%></h1>
 <div class="show_calendar">
   <div class="cost_calendar">
@@ -32,9 +33,18 @@
       </tbody>
     </table>
     <div class="side_link">
+      <h3>表のリンク</h3>
       <ul>
         <li><%= link_to  "支出詳細", "#cost-detail-header" %></li>
         <li><%= link_to  "項目別支出合計", "#cost-group-by-item-header" %></li>
+      </ul>
+    </div>
+    <div class="member_list">
+      <h3>参加しているユーザー</h3>
+      <ul>
+        <% @room.users.each do |member|%>
+        <li><%= member.name %>さん</li>
+        <%end%>
       </ul>
     </div>
   </div>
@@ -58,4 +68,6 @@
     <%= icon 'fas', 'user-plus' %>
   <%end%>
 </div>
+<%= render 'shared/exit', room: @room %>
+
 <%= render 'shared/back', path: root_path %>

@@ -2,4 +2,10 @@
 <h2><%= l @date %></h2>
 <%= render 'table', items: @items, room: @room, total_values: @total_values %>
 
+<div class="add_btn">
+  <%= icon 'fas', 'plus' %>
+  <%= link_to  new_item_path(@room, date: params[:date]) do %>
+    <%= icon 'fas', 'yen-sign'%>
+  <%end %>
+</div>
 <%= render 'shared/back', path: room_path(@room) %>

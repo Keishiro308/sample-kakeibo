@@ -3,9 +3,11 @@
 <%= form_with model: room, local: true do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class="field">
-    <%= f.text_field :name, placeholder: '家計簿の名前を入力してください', class: 'entry_field', value: room.name %>
-    <%= f.label :name, "名前" %>
-    <span class="focus_line"></span>
+    <div class="form_wrap">
+      <%= f.text_field :name, placeholder: '家計簿の名前を入力してください', class: 'entry_field', value: room.name %>
+      <%= f.label :name, "名前" %>
+      <span class="focus_line"></span>
+    </div>
   </div>
     <%= f.submit  class: 'btn' %>
   

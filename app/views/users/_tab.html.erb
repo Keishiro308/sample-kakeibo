@@ -6,13 +6,20 @@
       <input id="inviting" type="radio" name="tab_item">
       <label class="tab_item" for="inviting">招待したユーザー <%= icon 'far', 'user' %></label>
       <div class="tab_content" id="all_content">
-        <div class='room-card'>
+        <div class='room_card'>
           <% rooms.each do |room| %>
-              <div>
-                <%=   link_to  room.name, room_path(room) %>
-                <%= link_to  "削除", room_path(room), method: :delete, 
-                data: { confirm: '本当に削除しますか？' }, class: 'btn_item btn_delete_item' %>
-                <%= link_to  "名前変更", edit_room_path(room), class: 'btn_item btn_edit_item' %>
+              <div class='room_wrap'>
+                <div class="room_name_wrap">
+                  <%=   link_to  room.name, room_path(room), class: 'room_name' %>
+                </div>
+                <div class="room_btn_wrap">
+                  <%= link_to  "削除", room_path(room), method: :delete, 
+                  data: { confirm: '本当に削除しますか？' }, class: 'btn_item btn_delete_item' %>
+                  <%= link_to  "名前変更", edit_room_path(room), class: 'btn_item btn_edit_item' %>
+                  <%= link_to  "退出する", exit_room_path(room), 
+                  method: :delete, data: { confirm: "家計簿から退出してもよろしいですか？\n他にメンバーがいる場合家計簿は削除されません" },
+                  class: 'btn_item btn_exit_room' %>
+                </div>
               </div>
           <% end %>
         </div>

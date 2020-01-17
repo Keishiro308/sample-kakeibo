@@ -3,17 +3,21 @@
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'entry_field' %>
-    <%= f.label :email %>
-    <span class='focus_line'></span>
-
+    <div class="form_wrap">
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'entry_field' %>
+      <%= f.label :email %>
+      <span class='focus_line'></span>
+    </div>
 
   </div>
 
   <div class="field">
-    <%= f.password_field :password, autocomplete: "current-password", class: 'entry_field' %>
-    <%= f.label :password %>
-    <span class='focus_line'></span>
+    <div class="form_wrap">
+
+      <%= f.password_field :password, autocomplete: "current-password", class: 'entry_field' %>
+      <%= f.label :password %>
+      <span class='focus_line'></span>
+    </div>
 
   </div>
 

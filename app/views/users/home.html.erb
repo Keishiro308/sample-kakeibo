@@ -2,5 +2,8 @@
   <%= render 'tab', rooms: @rooms, inviteds: @inviteds %>
   <%= render 'add_button'%>
 <% else %>
-  <h1>ようこそ、家計簿アプリへ</h1>
+    <div class="container">
+      <h1>ようこそ、家計簿アプリへ</h1>
+      <%= link_to  "新規登録", new_user_registration_path, class: 'new_regist_btn btn_item'%>
+  </div>
 <% end %>

@@ -5,8 +5,6 @@
   text-align: center;
   a{
     font-size: 25px;
-    text-decoration: none;
-    color: black;
   }
   span{
     font-size: 40px;
@@ -91,6 +89,7 @@ table{
     }
     tbody{
       tr{
+        border-bottom: 1px solid #ddd;
         td{
           padding: 10px;
           text-align: center;
@@ -180,7 +179,9 @@ span{
   margin: 15px;
   display: flex;
   margin-top: 30px;
-  width: 90%;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
   #pie-chart{
     width: 50% !important;
   }
@@ -202,8 +203,9 @@ span{
       background-color: rgb(252, 0, 0);
       border-radius: 12px;
       color: white;
-      height: 50px;
-      line-height: 50px;
+      height: 40px;
+      line-height: 40px;
+      font-size: 20px;
     }
   }
 
@@ -238,4 +240,10 @@ span{
   .current-month {}
 
   .has-events {}
+}
+
+.room_wrap{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
 }
