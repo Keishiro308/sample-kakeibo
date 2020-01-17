@@ -9,13 +9,13 @@ User.create!(
   [
     {
       email: 'test1@test.com',
-      password: '111111',
+      password: 'password1',
       name: 'テスト１',
       unique_id: 'test1'
     },
     {
       email: 'test2@test.com',
-      password: '222222',
+      password: 'password2',
       name: 'テスト２',
       unique_id: 'test2'
     }
