@@ -7,27 +7,26 @@ class InvitesController < ApplicationController
   end
   
   def create
-    invited_user = User.find_by(unique_id: invite_params[:unique_id])
     room = Room.find(invite_params[:room_id])
+    invited_user = User.find_by(unique_id: invite_params[:unique_id])
     if invited_user.nil? || invited_user.id == current_user.id
       flash[:alert] = invited_user.nil? ? 'ユーザーが存在しません、IDを確認してください' : '自分を招待することはできません'
       redirect_to new_invite_path(room)
     else
-      duplicated_invite = Invite.where(invited_id: invited_user.id, room_id: invite_params[:room_id])
+      duplicated_invite = room.invites.find_by(invited_id: invited_user.id)
       if duplicated_invite.present? || room.member?(invited_user)
         flash[:alert] = room.member?(invited_user) ? 'そのユーザーはすでに参加しています' : 'そのユーザーはすでに招待されています'
         redirect_to new_invite_path(room)
       else
-        @invite = Invite.new(
+        @invite = room.invites.build(
           inviting_id: invite_params[:inviting_id],
-          invited_id: invited_user.id,
-          room_id: invite_params[:room_id]
+          invited_id: invited_user.id
         )
         if @invite.save
           flash[:notice] = "#{invited_user.name}さんを招待しました"
           redirect_to current_user
         else
-          flash[:alert] = '招待できませんでした'
+          flash.now[:alert] = '招待できませんでした'
           render new
         end
       end
@@ -51,7 +50,7 @@ class InvitesController < ApplicationController
       flash[:notice] = '参加しました'
       invite.destroy
     else
-      flash[:alert] = '参加できませんでした'
+      flash.now[:alert] = '参加できませんでした'
     end
     redirect_to current_user
   end

@@ -12,7 +12,8 @@
   </div>
   <div class="field">
     <div class="form_wrap" id='value_field_wrap'>
-      <%= f.text_field :value, class: 'entry_field required', id: 'value_field' %>
+      <%= f.text_field :value, class: 'entry_field required' %>
+      
       <%= f.label :value, "金額（半角数字）*" %>
       <span class='focus_line'></span>
     </div>
@@ -21,7 +22,7 @@
   </div>
   <div class="select_field">
     <label class='select'>
-      <%= f.select :category, options, {selected: item.category},  {id: 'select'} %>
+      <%= f.select :category, @options, {selected: item.category},  {id: 'select'} %>
     </label>
     <div class="error_message"></div>
   </div>

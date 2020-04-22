@@ -12,10 +12,10 @@ $(function(){
         name_field.next('label').fadeOut();
       }
     });
-    let value_field = $('#value_field');
+    let value_field = $('#item_value');
     value_field.keyup(function(){
       let val = value_field.val();
-      if (val === '' || val.match(/\s+/) || val.match(/\D+/)) {
+      if (val === ' ' || val.match(/\s+/) || val.match(/\D+/)) {
         value_field.addClass('is_error')
       }else {
         value_field.removeClass('is_error')

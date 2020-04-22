@@ -56,7 +56,7 @@
 <div class="data">
   <%= pie_chart @percentages, title: "#{@date.month}月の項目別支出割合", suffix: "%", height: "700px", id: 'pie-chart'%>
   <%= pie_chart @percentages_year, title: "#{@date.year}年の項目別支出割合", suffix: "%", height: "700px", id: 'pie-chart-year'%>
-  <%= column_chart @year_total_cost, title: "#{@date.year}年の月別合計支出", suffix: '円', height: "700px",  id: 'column-chart' %>
+  <%= column_chart @by_month_costs, title: "#{@date.year}年の月別合計支出", suffix: '円', height: "700px",  id: 'column-chart' %>
 </div>
 <div class="add_btn">
   <%= icon 'fas', 'plus' %>

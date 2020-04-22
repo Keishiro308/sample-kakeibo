@@ -1,14 +1,13 @@
 class RoomsController < ApplicationController
-  # before_action :authenticate_user!
-  before_action :correct_member, only: [:show_date, :show, :destory]
+  before_action :authenticate_user!
+  before_action :correct_member, only: [:show_date, :show, :destroy]
   def new
     @room = Room.new
   end
 
   def create
-    @room = Room.new(room_params)
+    @room = current_user.rooms.build(room_params)
     if @room.save
-      current_user.rooms << @room
       flash[:notice] = '新しい家計簿を作りました'
       redirect_to current_user
     else
@@ -56,45 +55,11 @@ class RoomsController < ApplicationController
     term = @date.beginning_of_month..@date.end_of_month
     term_year = @date.beginning_of_year..@date.end_of_year
     @items = @room.items.where(date: term)
-    items_year = @room.items.where(date: term_year)
     @total_values = @items.group(:category).sum(:value)
     @month_total_cost = @items.sum(:value)
-    year_total_cost = items_year.sum(:value)
-    @year_total_cost = {
-      "1月":0,
-      "2月":0,
-      "3月":0,
-      "4月":0,
-      "5月":0,
-      "6月":0,
-      "7月":0,
-      "8月":0,
-      "9月":0,
-      "10月":0,
-      "11月":0,
-      "12月":0
-    }
-
-    # {'1'　=>　[Itemの配列], '2' => [Itemの配列], ......}
-    month_hash = Item.where(date: term_year, room_id: params[:id]).group_by{ |item| item.date.month }
-    # {'1月' => 130, '2月' => 2400, .......}
-    month_costs = month_hash.map{
-      |k, month_items| [
-        "#{k}月", 
-        month_items.map(&:value).inject{
-         |sum, value| sum + value
-        }
-      ]
-    }.to_h
-    
-    month_costs.each{|k,cost| @year_total_cost[:"#{k}"] = cost}
-
-    @percentages = @items.group(:category).sum(:value).map{
-      |k,v| [k, (v.to_f / @month_total_cost * 100).round]
-    }.to_h
-    @percentages_year = items_year.group(:category).sum(:value).map{
-      |k,v| [k, (v.to_f / year_total_cost * 100).round]
-    }.to_h
+    @by_month_costs = Item.caliculate_month_costs(term_year, params)
+    @percentages = Item.caliculate_percentage(@room, term)
+    @percentages_year = Item.caliculate_percentage(@room, term_year)
   end
 
   def show_date

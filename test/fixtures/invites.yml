@@ -1,11 +1,2 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  inviting_id: 1
-  invited_id: 1
-  room_id: 1
-
-two:
-  inviting_id: 1
-  invited_id: 1
-  room_id: 1
