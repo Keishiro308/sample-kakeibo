@@ -22,7 +22,7 @@
         <td><%= item.user.name%>さん</td>
         <td><span class="badge <%= item.category %>"><%= item.category%></span></td>
         <td><%= item.memo%></td>
-        <td class='edit_btn_cell'><%= link_to  "編集", edit_item_path(room, item), class: 'btn_item btn_edit_item' %></td>
+        <td class='edit_btn_cell'><%= link_to  "編集", edit_room_item_path(room, item), class: 'btn_item btn_edit_room_item' %></td>
         <td class='delete_btn_cell'><%= link_to  "削除", item_path(item, room_id: room), method: :delete, 
         data: { confirm: '本当に削除しますか？' }, class: 'btn_item btn_delete_item' %></td>
       </tr>

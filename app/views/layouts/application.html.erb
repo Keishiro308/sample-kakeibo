@@ -18,7 +18,7 @@
           <a class="dropbtn">ユーザー</a>
           <div class="dropdown-content">
             <%= link_to  "マイページ", user_path(current_user) %>
-            <%= link_to  "ユーザー情報", user_info_path(current_user) %>
+            <%= link_to  "ユーザー情報", info_user_path(current_user) %>
             <%= link_to  "ユーザー編集", edit_user_registration_path %>
           </div>
         </li>

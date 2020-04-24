@@ -15,7 +15,7 @@
                 <div class="room_btn_wrap">
                   <%= link_to  "削除", room_path(room), method: :delete, 
                   data: { confirm: '本当に削除しますか？' }, class: 'btn_item btn_delete_item' %>
-                  <%= link_to  "名前変更", edit_room_path(room), class: 'btn_item btn_edit_item' %>
+                  <%= link_to  "名前変更", edit_room_path(room), class: 'btn_item btn_edit_room_item' %>
                   <%= link_to  "退出する", exit_room_path(room), 
                   method: :delete, data: { confirm: "家計簿から退出してもよろしいですか？\n他にメンバーがいる場合家計簿は削除されません" },
                   class: 'btn_item btn_exit_room' %>
@@ -49,7 +49,7 @@
                   <%= invite.invited_user.name%>さんを<%= invite.room.name%>に招待しました
                 </div>
                 <div>
-                  <%= link_to  "招待を取り消す", invite_path(invite), method: :delete, 
+                  <%= link_to  "招待を取り消す", invite_path(invite, room_id: invite.room.id), method: :delete, 
                   data: { confirm: '招待を削除してもよろしいですか？' }, class: 'btn_item btn_delete_invite ' %>
                 </div>
             </div>

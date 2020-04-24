@@ -15,3 +15,15 @@ john:
   email: 'john@test.com'
   name: 'john'
   unique_id: 'john'
+
+tanaka:
+  id: 3
+  email: 'tanaka@test.com'
+  name: 'tanaka'
+  unique_id: 'tanaka'
+
+maeda:
+  id: 4
+  email: 'maeda@test.com'
+  name: 'maeda'
+  unique_id: 'maeda'

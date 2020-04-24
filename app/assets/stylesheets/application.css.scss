@@ -143,6 +143,9 @@ ul.nav li.dropdown {
       border: 0;
       border-bottom: 1px solid #1b2538;
       background-color: transparent;
+      &.is_error{
+        border-bottom: 1px solid rgb(250, 5, 5);
+      }
     }
   }
   .select_field{
@@ -249,6 +252,12 @@ select::-ms-expand {
   display: none;
 }
 
+label.required{
+  &::after{
+    content: '*'
+  }
+}
+
 
 #value_field.is_error{
   border-color: red;
@@ -309,7 +318,7 @@ a{
   &.btn_delete_item{
     background-color: #ff4101;
   }
-  &.btn_edit_item,
+  &.btn_edit_room_item,
   &.btn_join_room{
     background-color: #04e25a;
   }

@@ -60,12 +60,12 @@
 </div>
 <div class="add_btn">
   <%= icon 'fas', 'plus' %>
-  <%= link_to  new_item_path(@room) do %>
+  <%= link_to  new_room_item_path(@room) do %>
     <%= icon 'fas', 'yen-sign'%>
   <%end %>
 </div>
 <div class="add_user_btn">
-  <%= link_to new_invite_path(@room) do %>
+  <%= link_to new_room_invite_path(@room) do %>
     <%= icon 'fas', 'user-plus' %>
   <%end%>
 </div>
