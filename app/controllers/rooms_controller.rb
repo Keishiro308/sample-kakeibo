@@ -40,7 +40,7 @@ class RoomsController < ApplicationController
       invites.each do |invite|
         invite.destroy
       end
-      flash[:success] = '家計簿を削除しました'
+      flash[:notice] = '家計簿を削除しました'
       redirect_to root_path
     else
       flash[:alert] = '家計簿を削除できませんでした'

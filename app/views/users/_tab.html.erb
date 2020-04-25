@@ -29,8 +29,7 @@
             <% inviteds.each do |invited| %>
               <div class='wrap'>
                 <div class="content">
-                    <%= invited.room.name%>に
-                    <%= invited.inviting_user.name%>さんから招待されました
+                    <%= invited.room.name%>に<%= invited.inviting_user.name%>さんから招待されました
                 </div>
                 <div class="">
                   <%= link_to  "参加", "/invites/#{invited.id}/rooms/add", method: :post, class: 'btn_join_room btn_item' %>
