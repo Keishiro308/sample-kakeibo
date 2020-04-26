@@ -11,6 +11,12 @@ class RoomFlowTest < ActionDispatch::IntegrationTest
     sign_in @user
   end
 
+  test 'access room' do
+    get root_url
+    get room_url(@room)
+    assert_response :success
+  end
+
   test 'create room' do
     get root_url
     assert_select 'a', @room.name.to_s
