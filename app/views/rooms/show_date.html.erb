@@ -1,6 +1,7 @@
 <h1><%= @room.name%></h1>
 <h2><%= l @date %></h2>
-<%= render 'table', items: @items, room: @room, total_values: @total_values %>
+<%= render 'income_table', incomes: @incomes, room: @room %>
+<%= render 'cost_table', items: @items, room: @room, total_values: @total_values %>
 
 <div class="add_btn">
   <%= icon 'fas', 'plus' %>

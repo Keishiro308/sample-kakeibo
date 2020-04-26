@@ -7,6 +7,8 @@ class User < ApplicationRecord
                     dependent: :destroy,
                     inverse_of: 'user'
   has_many :rooms, through: :joins
+  has_many :items
+  has_many :incomes
   has_many :invites, class_name: 'Invite', inverse_of: 'inviting_user', foreign_key: 'inviting_id'
   has_many :inviteds, class_name: 'Invite', inverse_of: 'invited_user', foreign_key: 'invited_id'
   validates :name, presence: true, uniqueness: { case_sensitive: false }

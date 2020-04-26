@@ -1,6 +1,8 @@
 // Place all the styles related to the Rooms controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+//show
 .calendar-heading{
   text-align: center;
   a{
@@ -41,9 +43,10 @@ table{
       }
     }
   }
-  &.month_total_cost_table{
+  &.month_total_cost_table, &.month_total_income_table{
     border-collapse: collapse;
     margin-top: 60px;
+    font-size: 30px;
     thead{
       tr{
         th{
@@ -63,9 +66,21 @@ table{
     }
   }
   &.month_total_cost_table{
-    font-size: 30px;
+    thead{
+      tr{
+        th{
+          border-color: #ff54a5;
+        }
+      }
+    }
+    tbody{
+      tr{
+        border-color: #ff54a5;
+      }
+    }
   }
   &#cost-detail,
+  &#income-detail,
   &#cost-group-by-item{
     border-collapse: collapse;
     width: 80%;
@@ -201,12 +216,17 @@ span{
       font-size: 20px;
     }
     .day_total{
-      background-color: rgb(252, 0, 0);
       border-radius: 12px;
       color: white;
       height: 40px;
       line-height: 40px;
       font-size: 20px;
+    }
+    .day_cost{
+      background-color: rgb(252, 0, 0);
+    }
+    .day_income{
+      background-color: #0fe467;
     }
   }
 
@@ -251,4 +271,75 @@ span{
   .content{
     display: inline;
   }
+}
+
+// new/edit
+
+.form_tabs {
+  margin: 0 auto;
+  margin-top: 50px;
+  padding-bottom: 30px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  font-size: 20px;
+  label{
+    a{
+      text-decoration: none;
+      color: #646464;
+      display: inline-block;
+      width: 100%;
+    }
+  }
+}
+
+
+.tab_item_form {
+  width: 50%;
+  height: 60px;
+  border-bottom: 3px solid #12d600;
+  background-color: #d9d9d9;
+  line-height: 60px;
+  font-size: 20px;
+  text-align: center;
+  color: #565656;
+  display: block;
+  float: left;
+  text-align: center;
+  font-weight: bold;
+  transition: all 0.2s ease;
+  &:hover{
+    opacity: .75;
+  }
+}
+
+
+input[name="tab_item"] {
+  display: none;
+}
+
+.tab_content {
+  display: none;
+  padding: 40px 40px 0;
+  clear: both;
+  overflow: hidden;
+  .room_card{
+    a.room_name{
+      color: #000;
+      text-decoration: none;
+      &:hover{
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+#cost:checked ~ #cost_content,
+#income:checked ~ #income_content {
+  display: block;
+}
+
+.form_tabs input:checked + .tab_item_form {
+  background-color: #12d600;
+  color: #fff;
 }

@@ -1,0 +1,42 @@
+<div class="form_card">
+  <h3>収入を登録する</h3>
+<%= form_with model: @income, local: true do |t| %>
+<%= render 'shared/error_messages', object: t.object %>
+  <div class="field">
+    <div class="form_wrap">
+      <%= t.text_field :name, class: 'entry_field' %>
+
+      <%= t.label :name, "名前" %>
+      <span class='focus_line'></span>
+    </div>
+
+  </div>
+  <div class="field">
+    <div class="form_wrap" id='value_field_wrap'>
+      <%= t.text_field :value, class: 'entry_field' %>
+      
+      <%= t.label :value, "金額（半角数字）" , class: 'required' %>
+      <span class='focus_line'></span>
+    </div>
+    <div class="error_message"></div>
+
+  </div>
+  
+  <div class="date_field">
+    <%= t.label :date, "日付", id: 'date', class: 'required' %>
+    <%= t.date_select :date, default: @the_day %>
+    <div class="error_message"></div>
+
+  </div>
+  <div class="textarea_field">
+    <%= t.label :memo, "備考" %>
+    <%= t.text_area :memo %>
+  </div>
+  <%= t.hidden_field :room_id, value: @room.id  %>
+  <%= t.hidden_field :user_id, value: current_user.id  %>
+
+    <%= t.submit class: 'btn' %>
+  *は必須項目
+<% end %>
+</div>
+<%= render 'shared/back', path: room_path(@room) %>

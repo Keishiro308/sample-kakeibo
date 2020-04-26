@@ -393,7 +393,8 @@ input[name="tab_item"] {
   }
 }
 
-
+#cost:checked ~ #cost_content,
+#income:checked ~ #income_content,
 #all:checked ~ #all_content,
 #invited:checked ~ #invited_content,
 #inviting:checked ~ #inviting_content {

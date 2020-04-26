@@ -1,0 +1,8 @@
+ja:
+  activerecord:
+    attributes:
+      income:
+        value: 金額
+        date: 日付
+        memo: 備考
+        name: 名前

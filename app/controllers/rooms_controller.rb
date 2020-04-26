@@ -11,7 +11,7 @@ class RoomsController < ApplicationController
       flash[:notice] = '新しい家計簿を作りました'
       redirect_to current_user
     else
-      flash.now[:alert] = '家計簿を作れませんでした'
+      flash[:alert] = '家計簿を作れませんでした'
       render 'new'
     end
   end
@@ -54,9 +54,17 @@ class RoomsController < ApplicationController
     @date = params[:start_date] ? Date.parse(params[:start_date]) : Date.today
     term = @date.beginning_of_month..@date.end_of_month
     term_year = @date.beginning_of_year..@date.end_of_year
+
+    #表やカレンダー用の変数
     @items = @room.items.where(date: term)
+    @incomes = @room.incomes.where(date: term)
+    @incomes_and_items = @incomes + @items
+
     @total_values = @items.group(:category).sum(:value)
+
+    #グラフ用の変数
     @month_total_cost = @items.sum(:value)
+    @month_total_income = @incomes.sum(:value)
     @by_month_costs = Item.caliculate_month_costs(term_year, params)
     @percentages = Item.caliculate_percentage(@room, term)
     @percentages_year = Item.caliculate_percentage(@room, term_year)
@@ -66,6 +74,7 @@ class RoomsController < ApplicationController
     @room = Room.find(params[:id])
     @date = Date.parse(params[:date])
     @items = @room.items.where(date: params[:date])
+    @incomes = @room.incomes.where(date: params[:date])
     @total_values = @items.group(:category).sum(:value)
   end
 

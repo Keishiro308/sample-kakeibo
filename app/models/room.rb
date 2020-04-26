@@ -6,6 +6,7 @@ class Room < ApplicationRecord
   has_many :users, through: :paticipants
   accepts_nested_attributes_for :paticipants
   has_many :items, dependent: :destroy
+  has_many :incomes, dependent: :destroy
   has_many :invites
   validates :name, presence: true
 

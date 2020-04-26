@@ -15,8 +15,10 @@ Rails.application.routes.draw do
     end
     resources :invites, only: [:new]
     resources :items, only: [:new, :edit]
+    resources :incomes, only: [:new, :edit]
   end
-  resources :items, except: :new
+  resources :items, except: [:new, :edit]
+  resources :incomes, except: [:new, :edit]
 
   get '/rooms/:id/:date', to: 'rooms#show_date', as: :room_date
 

@@ -7,6 +7,7 @@ class ItemsController < ApplicationController
   
   def new
     @item = Item.new
+    @income = Income.new
     @room = Room.find(params[:room_id])
     @the_day = params[:date].nil? ? Date.today : Date.parse(params[:date])
   end

@@ -4,16 +4,30 @@
 <h1>家計簿名：<%= @room.name%></h1>
 <div class="show_calendar">
   <div class="cost_calendar">
-    <%= month_calendar events: @items do |date, items| %>
-      <%= link_to  date.day, "/rooms/#{@room.id}/#{date}" %>
-      <% total_value = 0 %>
+    <%= month_calendar events: @incomes_and_items do |date, ii| %>
+      <%= link_to  date.day, room_date_path(@room, date) %>
 
-      <% items.each do |item| %>
-        <% total_value += item.value %>
+
+      <% total_cost = 0 
+          total_income = 0
+      %>
+      <% ii.each do |i| %>
+        <% if i.class == Income %>
+          <% total_income += i.value %>
+        <% else %>
+          <% total_cost += i.value %>
+        <% end %>
       <% end %>
-      <% unless total_value == 0 %>
-        <div class='day_total'>
-          <%= "#{total_value}円 " %>
+
+
+      <% unless total_cost == 0 %>
+        <div class='day_total day_cost'>
+          <%= "#{total_cost}円 " %>
+        </div>
+      <% end %>
+      <% unless total_income == 0 %>
+        <div class='day_total day_income'>
+          <%= "#{total_income}円 " %>
         </div>
       <% end %>
       
@@ -29,6 +43,18 @@
       <tbody>
         <tr>
           <td><%= @month_total_cost%>円</td>
+        </tr>
+      </tbody>
+    </table>
+    <table class='month_total_income_table'>
+      <thead>
+        <tr>
+          <th><%="#{@date.month}月の収入合計"%></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= @month_total_income%>円</td>
         </tr>
       </tbody>
     </table>
@@ -49,10 +75,9 @@
     </div>
   </div>
 </div>
-<% @room.items.each do |item| %>
-  
-<% end %>
-<%= render 'table', items: @items, room: @room %>
+
+<%= render 'income_table', incomes: @incomes, room: @room %>
+<%= render 'cost_table', items: @items, room: @room %>
 <div class="data">
   <%= pie_chart @percentages, title: "#{@date.month}月の項目別支出割合", suffix: "%", height: "700px", id: 'pie-chart'%>
   <%= pie_chart @percentages_year, title: "#{@date.year}年の項目別支出割合", suffix: "%", height: "700px", id: 'pie-chart-year'%>

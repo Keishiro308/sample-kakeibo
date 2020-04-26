@@ -1,2 +1,11 @@
-<h2 class='item_header'>支出を登録する</h2>
-<%=render "form", {item: @item, options: @options}%>
+<div class="form_tabs">
+  <input type="radio" id='cost', name='tab_item' checked>
+  <label for="cost" class='tab_item_form'>支出を登録する</label>
+  <input type="radio" id='income', name='tab_item'>
+  <label for="income" class='tab_item_form'>
+    <%= link_to  "収入を登録する", new_room_income_path(@room) %>
+  </label>
+  <div class="tab_content" id="cost_content">
+    <%=render "form", {item: @item, options: @options}%>
+  </div>
+</div>

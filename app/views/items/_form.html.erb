@@ -1,7 +1,7 @@
 <div class="form_card">
-
-<%= form_with model:item, local: true do |f| %>
-<%= render 'shared/error_messages', object: f.object %>
+  <h3>支出を登録する</h3>
+<%= form_with model: @item, local: true do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
   <div class="field">
     <div class="form_wrap">
       <%= f.text_field :name, class: 'entry_field' %>

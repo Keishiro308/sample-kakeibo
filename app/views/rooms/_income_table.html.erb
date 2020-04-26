@@ -1,0 +1,27 @@
+<div class="tables">
+  <h2 id='income-detail-header'>収入詳細</h2>
+  <table id='income-detail'>
+    <thead>
+      <tr>
+        <th>名前</th>
+        <th>金額</th>
+        <th>日付</th>
+        <th>作成者</th>
+        <th>備考</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% incomes.each do |income|%>
+      <tr>
+        <td><%= income.name%></td>
+        <td><%= income.value%>円</td>
+        <td><%= income.date.day%>日</td>
+        <td><%= income.user.name%>さん</td>
+        <td><%= income.memo%></td>
+        <td class='edit_btn_cell'><%= link_to  "編集", edit_room_income_path(room, income), class: 'btn_item btn_edit_room_item' %></td>
+        <td class='delete_btn_cell'><%= link_to  "削除", income_path(income, room_id: room), method: :delete, 
+        data: { confirm: '本当に削除しますか？' }, class: 'btn_item btn_delete_item' %></td>
+      </tr>
+      <%end%>
+    </tbody>
+  </table>
